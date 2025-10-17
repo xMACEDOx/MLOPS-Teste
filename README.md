@@ -58,6 +58,7 @@ pip install -r requirements.txt
 ```
 $env:PYTHONPATH = "$env:PYTHONPATH;$(Get-Location)"
 
+```
 4. Execute a função de treinamento
 ```
 python src/train.py 
