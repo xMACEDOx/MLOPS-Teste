@@ -46,8 +46,10 @@ source env/bin/activate
 ```
 Windows
 ```
-py -3.12 -m venv env 
+py -3.12 -m venv env
+
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
 .\env\Scripts\Activate.ps1
 ```
 2. Instale os requirements
