@@ -1,0 +1,25 @@
+name: Build and Push python Image to dockerhub
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    name: push docker image to hub
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      env :
+        DOCKERHUB_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
+        DOCKERHUB_PWD: ${{secrets.DOCKERHUB_PWD}}
+      run: |
+        docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PWD
+    - name: Build & Run
+      run: |
+        docker build . --file Dockerfile --tag carolzkamada/mlops:latest
+        docker run carolzkamada/mlops:latest
+    - name: Push Docker Image
+      run: docker push carolzkamada/mlops:latest
+        
